@@ -17,11 +17,11 @@ contract WhaleToken is ERC20 {
     }
 
     modifier onlyTournament() {
-        require(msg.sender == 1, "Only a tournament can call this");
+        require(_tournaments[msg.sender] == 1, "Only a tournament can call this");
         _;
     }
 
-    function addTournament(address _tournament) onlyOwner() returns (bool){
+    function addTournament(address _tournament) public onlyOwner() returns (bool){
         _tournaments[_tournament] = 1;
         return true;
     }
