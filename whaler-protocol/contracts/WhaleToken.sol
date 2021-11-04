@@ -5,6 +5,7 @@ import {ERC20} from '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 contract WhaleToken is ERC20 {
     address private _owner;
+    mapping(address => uint) private _tournaments;
 
     constructor () ERC20("WHALETOKEN", "WHLE") {
         _owner = msg.sender;
@@ -15,7 +16,17 @@ contract WhaleToken is ERC20 {
         _;
     }
 
-    function mintForPlayer(address _player, uint _amount) public onlyOwner() returns (bool success) {
+    modifier onlyTournament() {
+        require(msg.sender == 1, "Only a tournament can call this");
+        _;
+    }
+
+    function addTournament(address _tournament) onlyOwner() returns (bool){
+        _tournaments[_tournament] = 1;
+        return true;
+    }
+
+    function mintForPlayer(address _player, uint _amount) public onlyTournament() returns (bool success) {
         _mint(_player, _amount);
         return true;
     }
