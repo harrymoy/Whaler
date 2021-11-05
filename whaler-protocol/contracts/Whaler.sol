@@ -5,29 +5,31 @@ import {WhaleToken} from './WhaleToken.sol';
 import {Tournament} from './Tournament.sol';
 
 contract Whaler {
-    WhaleToken private _token;
-    address private _daiAddress;
-    address private _owner;
-    uint private _tournamentId;
-    mapping(uint => address) private _tournaments;
+    WhaleToken private token;
+    address private dai;
+    address private owner;
+    address private priceOracle;
+    uint private tournamentId;
+    mapping(uint => address) private tournaments;
     
-    constructor(address _dai) {
-        _token = new WhaleToken();
-        _daiAddress = _dai;
-        _owner = msg.sender;
-        _tournamentId = 0;
+    constructor(address _daiAddress, address _priceOracleAddress) {
+        token = new WhaleToken();
+        dai = _daiAddress;
+        owner = msg.sender;
+        tournamentId = 0;
+        priceOracle = _priceOracleAddress;
     }
 
     modifier onlyOwner() {
-        require(_owner == msg.sender, "You are not owner");
+        require(owner == msg.sender, "You are not owner");
         _;
     }
 
     function createTournament() public onlyOwner() returns (bool) {
-        Tournament tournament = new Tournament(_daiAddress, address(_token));
-        _tournaments[_tournamentId] = address(tournament);
-        _tournamentId++;
-        _token.addTournament(address(tournament));
+        Tournament tournament = new Tournament(dai, address(token), priceOracle);
+        tournaments[tournamentId] = address(tournament);
+        tournamentId++;
+        token.addTournament(address(tournament));
         return true;
     }
 }
