@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import {IERC20} from '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import {WhaleToken} from './WhaleToken.sol';
 import {SafeMath} from "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import {IPriceOracle} from './IPriceOracle.sol';
+import {IPriceOracle} from './interfaces/IPriceOracle.sol';
 
 contract Tournament {
     using SafeMath for uint;
