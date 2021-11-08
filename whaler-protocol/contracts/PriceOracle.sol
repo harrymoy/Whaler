@@ -10,6 +10,7 @@ contract PriceOracle is IPriceOracle {
     AggregatorV3Interface internal _ethPriceFeed;
     AggregatorV3Interface internal _uniPriceFeed;
 
+    //Initialize the contract address for the different feeds
     constructor() {
         _dogePriceFeed = AggregatorV3Interface(0x2465CefD3b488BE410b941b1d4b2767088e2A028);
         _btcPriceFeed = AggregatorV3Interface(0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c);
@@ -17,6 +18,7 @@ contract PriceOracle is IPriceOracle {
         _uniPriceFeed = AggregatorV3Interface(0x553303d460EE0afB37EdFf9bE42922D8FF63220e);
     }
 
+    //Get the price of Dogecoin
     function getLatestDogecoinPrice() external override view returns (int) {
         (
             uint80 roundId,
@@ -28,6 +30,7 @@ contract PriceOracle is IPriceOracle {
         return price;
     }
 
+    //Get the price of Bitcoin
     function getLatestBitconPrice() external override view returns (int) {
         (
             uint80 roundId,
@@ -39,6 +42,7 @@ contract PriceOracle is IPriceOracle {
         return price;
     }
 
+    //Get the price of Ethereum
     function getLatestEthereumPrice() external override view returns (int) {
         (
             uint80 roundId,
@@ -50,6 +54,7 @@ contract PriceOracle is IPriceOracle {
         return price;
     }
 
+    //Get the price of Uniswap
     function getLatestUniswapPrice() external override view returns (int) {
         (
             uint80 roundId,

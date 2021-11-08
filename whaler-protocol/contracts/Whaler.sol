@@ -11,7 +11,9 @@ contract Whaler {
     address private priceOracle;
     uint private tournamentId;
     mapping(uint => address) private tournaments;
-    
+
+   //Initializes the contract and takes the address of Dai and the price oracle
+   //Creates the WhaleToken and captures it in state to hold its address 
     constructor(address _daiAddress, address _priceOracleAddress) {
         token = new WhaleToken();
         dai = _daiAddress;
@@ -25,6 +27,7 @@ contract Whaler {
         _;
     }
 
+    //Creates a tournament as a contract that has its own pooled resource and adds it to the list of tournaments in the WhaleToken
     function createTournament() public onlyOwner() returns (bool) {
         Tournament tournament = new Tournament(dai, address(token), priceOracle);
         tournaments[tournamentId] = address(tournament);
