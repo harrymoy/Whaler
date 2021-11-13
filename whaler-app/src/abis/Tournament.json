@@ -1,0 +1,5 @@
+[
+  "function approveTournament() returns (bool)",
+  "function deposit() returns (uint256)",
+  "function getCoinPrice(uint256 _coin) view returns (uint256)"
+]
