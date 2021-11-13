@@ -10,11 +10,17 @@ contract Tournament {
     using SafeMath for uint;
 
     enum Coin {DOGE, BTC, ETH, UNI}
+
     IERC20 private dai;
     WhaleToken private token;
     uint private prizeMoney;
-    mapping(address => uint) private balances;
+    mapping(uint => address) private _mockTokens;
+    mapping(address => uint) private whaleTokenBalances;
+    mapping(address => uint[]) private tokenHoldings;
+    mapping(address => mapping(uint => uint)) private tokenHoldingBalance;
     IPriceOracle private priceOracle;
+
+    event Redemption(address _sender, uint _amount);
 
     modifier greaterThanZero(uint _amount) {
         require(_amount > 0, "Must be more than 0");
@@ -38,11 +44,22 @@ contract Tournament {
         prizeMoney += amount;
         uint toMint = amount.mul(100);
         token.mintForPlayer(msg.sender, toMint);
-        balances[msg.sender] += toMint;
+        whaleTokenBalances[msg.sender] += toMint;
         return toMint;
     }
 
-    function getCoinPrice(uint _coin) public view returns(uint) {
+    function buyToken(uint _coin, uint _quantity) public returns (bool) {
+        uint price = getCoinPrice(_coin);
+        uint whaleTokenPrice = price.mul(100);
+        uint purchaseAmount = whaleTokenPrice.mul(_quantity);
+        IERC20 mockToken = IERC20(_mockTokens[_coin]);
+        whaleTokenBalances[msg.sender] -= purchaseAmount;
+        mockToken.approve(address(this), purchaseAmount);
+        mockToken.transferFrom(address(this), msg.sender, purchaseAmount);
+        return true;
+    }
+
+    function getCoinPrice(uint _coin) private view returns(uint) {
         require(_coin < 4, "value must be less than 4 to be valid for enum");
         int price;
         Coin coin = Coin(_coin);
@@ -60,6 +77,19 @@ contract Tournament {
         }
         uint whalePrice = uint(price).mul(100);
         return whalePrice;
+    }
+
+    function redeemValue() public returns(uint) {
+        uint whaleTokenAmount = 0;
+        for (uint i = 0; i < tokenHoldings[msg.sender].length; i++) {
+            uint price  = getCoinPrice(i);
+            uint dollarAmount = tokenHoldingBalance[msg.sender][i] * price;
+            uint whaleTokens = dollarAmount.mul(100);
+            whaleTokenAmount += whaleTokens;
+        }
+        whaleTokenBalances[msg.sender] += whaleTokenAmount;
+        emit Redemption(msg.sender, whaleTokenBalances[msg.sender]);
+        return whaleTokenBalances[msg.sender];
     }
 
 }
