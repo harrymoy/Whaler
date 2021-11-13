@@ -11,6 +11,7 @@ contract Whaler {
     address private priceOracle;
     uint private tournamentId;
     mapping(uint => address) private tournaments;
+    address[] private _mockTokens;
 
    //Initializes the contract and takes the address of Dai and the price oracle
    //Creates the WhaleToken and captures it in state to hold its address 
