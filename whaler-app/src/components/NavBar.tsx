@@ -4,20 +4,16 @@ import logoSmall from '../images/Logo_200px.png';
 import logoMedium from '../images/Logo_300px.png';
 import IconButton from '@mui/material/IconButton';
 import ConnectButton from '../images/ConnectButton.png';
+import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import './NavBar.css'
+import '@fontsource/roboto';
+
 
 declare let window: any;
 
 const NavBar = () => {
     const [address, setAddress] = useState<string>("");
-
-    // useEffect(() => {
-    //     if (window.ethereum.isConnected()) {
-    //         setChecked(true)
-    //     } else {
-    //         setChecked(false)
-    //     }
-    // })
 
     const connectMetaMask = async () => {
         if (MetaMaskOnBoarding.isMetaMaskInstalled()) {
@@ -32,15 +28,28 @@ const NavBar = () => {
 
     return (
         <>
-            <img srcSet={`${logoSmall} 200w, ${logoMedium} 300w`}
-                sizes="(max-width: 220px) 50px, 220px"
-                src={logoMedium} alt="Logo" className="logo" />
+            <Link to="/">
+                <img srcSet={`${logoSmall} 200w, ${logoMedium} 300w`}
+                    sizes="(max-width: 220px) 50px, 220px"
+                    src={logoMedium} alt="Logo" className="logo" />
+            </Link>
+            <p className="address">{address}</p>
             <div className="navbar">
-                <IconButton aria-label="connect" size="small" onClick={connectMetaMask}
-                    sx={{ float: "right", width: "80px", height: "80px", margin: "30px 30px 0 0" }}>
-                    <img alt="ConnectButton" src={ConnectButton} className="connectButton"></img>
-                </IconButton>
-                <p className="address">{address}</p>
+                <ul>
+                    <li style={{ marginRight: "50px" }}>
+                        <IconButton aria-label="connect" size="small" onClick={connectMetaMask}
+                            sx={{ width: "80px", height: "80px", display: "inline" }}>
+                            <img alt="ConnectButton" src={ConnectButton} className="connectButton"></img>
+                        </IconButton>
+                    </li>
+                    <li className="orderBook">
+                        <Link to="/order">
+                            <Typography variant="h3" sx={{ fontFamily: "Roboto", display: "inline" }}>
+                                Order Book
+                            </Typography>
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </>
     );

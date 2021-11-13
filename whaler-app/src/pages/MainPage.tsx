@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import CardImage from '../images/EnterTournieCardImage.png';
 import WhalerText from '../images/WhalerText.png'
 import LinearWithValueLabel from '../components/ProgressBar';
+import { createTournament } from '../helpers/createTournament';
 
 import '@fontsource/coiny';
 import './MainPage.css';
@@ -15,7 +16,7 @@ const MainPage = () => {
     return (
         <>
             <Card sx={{
-                maxWidth: 600, float: "right", margin: "0 100px 100px 0", height: "600px", width: "600px", position: "relative", borderRadius: "20px",
+                maxWidth: 600, float: "right", top: "100px", left: "25%", height: "600px", width: "600px", position: "relative", borderRadius: "20px",
                 boxShadow: "7px 9px 3px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)"
             }}>
                 <Button variant="contained"
@@ -23,7 +24,9 @@ const MainPage = () => {
                         backgroundColor: "white", color: "black", position: "absolute", zIndex: 10,
                         fontFamily: "Coiny", top: "30px", left: "30px", height: "50px", width: "150px",
                         fontSize: "40px", paddingTop: "13px"
-                    }}>
+                    }}
+                    onClick={createTournament}
+                >
                     Play
                 </Button>
                 <CardMedia

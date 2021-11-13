@@ -1,18 +1,20 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import MainPage from './pages/MainPage';
+import OrderPage from './pages/OrderPage';
+import { Routes, BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <header className='header-container'>
+    <>
+      <Router>
         <NavBar />
-      </header>
-      <div className='body-container'>
-        <MainPage />
-      </div>
-
-    </div>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/order" element={<OrderPage />} />
+        </ Routes>
+      </Router>
+    </>
   );
 }
 

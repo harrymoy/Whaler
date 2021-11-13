@@ -1,0 +1,6 @@
+[
+  "function getLatestBitconPrice() view returns (int256)",
+  "function getLatestDogecoinPrice() view returns (int256)",
+  "function getLatestEthereumPrice() view returns (int256)",
+  "function getLatestUniswapPrice() view returns (int256)"
+]
