@@ -70,7 +70,7 @@ const OrderPage = () => {
     const [uni, setUni] = useState<number>(0);
 
     const getPrice = (): void => {
-        fetch(`http://localhost:3080/?apiKey=b3224a35-56de-457c-bf05-35de41c34cea`)
+        fetch('http://localhost:3080/')
             .then(response => response.json())
             .then(data => {
                 setBtc(data["BTC"])

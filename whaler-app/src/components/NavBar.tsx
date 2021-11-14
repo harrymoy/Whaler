@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import MetaMaskOnBoarding from '@metamask/onboarding';
 import logoSmall from '../images/Logo_200px.png';
 import logoMedium from '../images/Logo_300px.png';
