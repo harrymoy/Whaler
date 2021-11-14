@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -25,7 +25,8 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
 }
 
 export default function LinearWithValueLabel() {
-    const [progress, setProgress] = useState(10);
+    const [progress, setProgress] = useState(0);
+
 
     return (
         <Box sx={{ width: '100%' }}>

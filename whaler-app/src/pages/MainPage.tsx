@@ -16,18 +16,18 @@ const MainPage = () => {
     return (
         <>
             <Card sx={{
-                maxWidth: 600, float: "right", top: "100px", left: "25%", height: "600px", width: "600px", position: "relative", borderRadius: "20px",
+                maxWidth: 600, float: "right", top: "100px", height: "600px", width: "600px", position: "relative", borderRadius: "20px",
                 boxShadow: "7px 9px 3px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)"
             }}>
                 <Button variant="contained"
                     sx={{
                         backgroundColor: "white", color: "black", position: "absolute", zIndex: 10,
                         fontFamily: "Coiny", top: "30px", left: "30px", height: "50px", width: "150px",
-                        fontSize: "40px", paddingTop: "13px"
+                        fontSize: "30px", paddingTop: "13px"
                     }}
                     onClick={createTournament}
                 >
-                    Play
+                    Create
                 </Button>
                 <CardMedia
                     sx={{ height: "75%", width: "100%", position: "absolute", zIndex: 8 }}
@@ -38,7 +38,7 @@ const MainPage = () => {
                 />
                 <CardContent sx={{ background: "#0066FF", color: "white", marginTop: "70%", height: "25%", position: "inherit", zIndex: 9 }}>
                     <Typography gutterBottom variant="h4" component="div" sx={{ color: "white", fontFamily: "Coiny", textAlign: "center" }}>
-                        Entry Price: 20 DAI
+                        Start a Tournament
                     </Typography>
                     <Typography variant="h5" color="text.secondary" sx={{ color: "white", fontFamily: "Coiny", textAlign: "center" }}>
                         Tournament Length: 7 Days

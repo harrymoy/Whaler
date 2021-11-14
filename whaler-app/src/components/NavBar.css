@@ -19,14 +19,13 @@
     max-width: 100%;
     max-height: 100%;
     display: block;
-    margin-right: 70%;
 }
 
 .address {
     color: white;
     margin: 0;
     position: absolute;
-    right: 0;
+    right: 20px;
 }
 
 ul {
@@ -38,9 +37,4 @@ ul {
 li {
     display: inline;
     float: right;
-}
-
-.orderBook {
-    padding: 1%;
-    margin-right: 5%;
 }

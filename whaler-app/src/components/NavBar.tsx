@@ -36,16 +36,23 @@ const NavBar = () => {
             <p className="address">{address}</p>
             <div className="navbar">
                 <ul>
-                    <li style={{ marginRight: "50px" }}>
+                    <li style={{ margin: "-5px 50px 50px 50px" }}>
                         <IconButton aria-label="connect" size="small" onClick={connectMetaMask}
                             sx={{ width: "80px", height: "80px", display: "inline" }}>
                             <img alt="ConnectButton" src={ConnectButton} className="connectButton"></img>
                         </IconButton>
                     </li>
-                    <li className="orderBook">
+                    <li>
                         <Link to="/order">
-                            <Typography variant="h3" sx={{ fontFamily: "Roboto", display: "inline" }}>
+                            <Typography variant="h4" sx={{ fontFamily: "Roboto", display: "inline", marginRight: "50px" }}>
                                 Order Book
+                            </Typography>
+                        </Link>
+                    </li>
+                    <li style={{ paddingRight: "30px" }}>
+                        <Link to="/tournaments">
+                            <Typography variant="h4" sx={{ fontFamily: "Roboto", display: "inline" }}>
+                                Tournaments
                             </Typography>
                         </Link>
                     </li>
