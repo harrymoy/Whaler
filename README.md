@@ -1,4 +1,4 @@
-![logo](./whaler.png)
+![logo](./Whaler.png)
 
 # Whaler
 
