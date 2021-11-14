@@ -4,18 +4,18 @@ import { useEffect, useState } from 'react';
 import { ButtonPropsVariantOverrides } from '@mui/material';
 
 const columns: GridColDef[] = [
-    { field: 'asset', headerName: 'Aset', width: 150 },
+    { field: 'asset', headerName: 'Aset', width: 300 },
     {
         field: 'price',
         headerName: 'Price',
-        width: 130,
+        width: 300,
         sortable: false,
     },
     {
         field: 'buy',
         headerName: 'Buy',
         sortable: false,
-        width: 150,
+        width: 300,
         renderCell: (params) => {
             const onClick = (e: any) => {
                 e.stopPropagation(); // don't select this row after clicking
@@ -40,7 +40,7 @@ const columns: GridColDef[] = [
         field: 'sell',
         headerName: 'Sell',
         sortable: false,
-        width: 150,
+        width: 300,
         renderCell: (params) => {
             const onClick = (e: any) => {
                 e.stopPropagation(); // don't select this row after clicking
@@ -92,7 +92,7 @@ const OrderPage = () => {
     ];
 
     return (
-        <div style={{ height: 400, width: '575px', margin: 'auto', marginTop: '10%' }}>
+        <div style={{ height: 400, width: '1200px', margin: 'auto', marginTop: '10%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
