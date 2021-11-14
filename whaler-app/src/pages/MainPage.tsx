@@ -16,7 +16,7 @@ const MainPage = () => {
     return (
         <>
             <Card sx={{
-                maxWidth: 600, float: "right", top: "100px", marginRight: "80px", height: "600px", width: "600px", position: "relative", borderRadius: "20px",
+                maxWidth: 600, float: "right", top: "100px", height: "600px", width: "600px", position: "relative", borderRadius: "20px",
                 boxShadow: "7px 9px 3px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)"
             }}>
                 <Button variant="contained"
